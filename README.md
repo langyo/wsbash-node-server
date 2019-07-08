@@ -21,11 +21,14 @@
 ```shell
 # 由客户端发送，在 WebSocket 连接成功后首先需要注册。
 execute system register h5
+
 # 由服务端回复，提示注册成功，并提供此客户端建立的连接的编号（类似 session ID）。
 data system register ok jCsi1m9z
+
 # 由客户端发送，模拟请求一些数据；
 # 其中，database get 是由库使用者自行注册的指令，langyo money 是传递进此指令所注册的函数的参数。
 execute database get langyo money
+
 # 由服务端回复，模拟触发此指令对应的函数，读取完数据库，并回复一个数字；
 # 回复时，它会自动补齐发送的指令类型与执行状态(success / fail)，便于客户端正确识别。
 data database get success no-money
