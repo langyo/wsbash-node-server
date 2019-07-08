@@ -2,7 +2,7 @@
 
 ## (Node.js Server)
 
-[中文🇨🇳](README.md) | [English🇺🇸](README_eng.md)
+[中文](README.md) | [English](README_eng.md)
 
 This is a communication tool library based on the WebSocket protocol, which allows developers to easily and quickly complete the communication between the client and the server, and only pay attention to the specific data processing logic.
 
@@ -27,9 +27,12 @@ execute system register h5
 # and providing the ID of the connection established by this client (similar to session ID).
 data system register ok jCsi1m9z
 # Sent by the client, the simulation requests some data;
-# "database get" is the developer registered command, "langyo money" is the parameter passed to the function registered by the instruction.
+# "database get" is the developer registered command,
+# "langyo money" is the parameter passed to the function registered by the instruction.
 execute database get langyo money
-# Replyed by the server, simulates the function corresponding to the instruction, reads the database, and replies with a number;
-# When replying, it automatically fills in the type of the sent instruction and the execution status (success/failure) so that the client can correctly identify.
+# Replyed by the server, simulates the function corresponding to the instruction,
+# reads the database, and replies with a number;
+# When replying, it automatically fills in the type of the sent instruction and the execution status (success/failure),
+# so that the client can correctly identify.
 data database get success no-money
 ```
