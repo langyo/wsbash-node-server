@@ -2,10 +2,14 @@
   "name": "wsbash-node-server",
   "version": "0.1.0",
   "description": "A C/S data exchange tool library that based on WebSocket.",
-  "main": "index.js",
+  "main": "commandRegister.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --watch"
   },
   "author": "langyo",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "dependencies": {
+    "jest": "^24.8.0",
+    "otfunc": "^0.1.1"
+  }
 }
