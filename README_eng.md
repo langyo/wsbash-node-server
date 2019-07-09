@@ -13,6 +13,7 @@ Another libraries：
 | Language | Type | Location |
 | :-: | :-: | :-: |
 | JavaScript(HTML5) | Client | [wsbash-h5-client](https://github.com/mcbbs-developer/wsbash-h5-client) |
+| Java | Client | [wsbash-java-client](https://github.com/mcbbs-developer/wsbash-java-client) |
 
 ## concept
 
