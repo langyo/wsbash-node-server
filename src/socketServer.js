@@ -11,13 +11,13 @@ module.exports = class SocketServer {
     this.commandRegister = new CommandRegister();
     this.server.on('connection', conn => {
       let id = shortid.generate();
-      clients[id] = new SocketManager(conn, id, this.commandRegister);
+      this.clients[id] = new SocketManager(conn, id, this.commandRegister);
     });
 
     this.register.bind(this);
     this.receive.bind(this);
   }
 
-  register() { this.commandRegister.apply(arguments); };
-  receive() { this.commandRegister.apply(arguments); };
+  register() { this.commandRegister.register.apply(this.commandRegister, arguments); };
+  receive() { this.commandRegister.receive.apply(this.commandRegister, arguments); };
 }
