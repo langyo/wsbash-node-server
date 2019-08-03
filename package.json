@@ -2,7 +2,7 @@
   "name": "wsbash-node-server",
   "version": "0.1.0",
   "description": "A C/S data exchange tool library that based on WebSocket.",
-  "main": "commandRegister.js",
+  "main": "./socketServer.js",
   "scripts": {
     "test": "jest --watch"
   },
@@ -10,6 +10,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "jest": "^24.8.0",
-    "otfunc": "^0.1.1"
+    "otfunc": "^0.1.1",
+    "shortid": "^2.2.14",
+    "ws": "^7.1.1"
   }
 }
