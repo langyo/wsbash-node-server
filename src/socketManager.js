@@ -36,7 +36,10 @@ module.exports = class SocketManager {
             break;
           }
           try {
-            this.commandRegister.registerObj[obj.package](Object.assign({}, obj));
+            this.commandRegister.registerObj[obj.package](
+              Object.assign({ id: this.id }, obj),
+              (newObj) => this.send(Object.assign({ type: 'data', package: obj.package, id: this.id }, newObj))
+            );
           } catch (e) {
             this.send({ type: 'system', package: 'error.runtime.execute', message: e.toString() });
           }
@@ -47,7 +50,7 @@ module.exports = class SocketManager {
             break;
           }
           try {
-            this.commandRegister.receiveObj[obj.package](Object.assign({}, obj));
+            this.commandRegister.receiveObj[obj.package](Object.assign({ id: this.id }, obj));
           } catch (e) {
             this.send({ type: 'system', package: 'error.runtime.data', message: e.toString() });
           }
