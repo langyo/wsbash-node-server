@@ -1,9 +1,8 @@
 module.exports = class SocketManager {
-  constructor(conn, id, cmd, broadcast) {
+  constructor(conn, id, cmd, clients) {
     this.connection = conn;
     this.commandRegister = cmd;
     this.id = id;
-    this.broadcast = broadcast;
 
     this.send = (obj) => {
       // Fill the default key.
@@ -40,7 +39,7 @@ module.exports = class SocketManager {
             this.commandRegister.registerObj[obj.package](
               Object.assign({ id: this.id }, obj),
               (newObj) => this.send(Object.assign({ type: 'data', package: obj.package, id: this.id }, newObj)),
-              broadcast
+              clients
             );
           } catch (e) {
             this.send({ type: 'system', package: 'error.runtime.execute', message: e.toString() });
@@ -52,7 +51,7 @@ module.exports = class SocketManager {
             break;
           }
           try {
-            this.commandRegister.receiveObj[obj.package](Object.assign({ id: this.id }, obj), broadcast);
+            this.commandRegister.receiveObj[obj.package](Object.assign({ id: this.id }, obj), clients);
           } catch (e) {
             this.send({ type: 'system', package: 'error.runtime.data', message: e.toString() });
           }

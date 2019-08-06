@@ -6,4 +6,8 @@ server.register('test', (obj, callback) => callback({ info: 'test' }));
 
 server.receive('test', (obj) => console.log(obj));
 
-server.register('broadcast', (obj, callback, broadcast) => broadcast({ type: 'data', package: 'broadcast', info: 'info' }));
+server.register('broadcast', (obj, callback, clients) => {
+  for(let i of Object.keys(clients)) {
+    clients[i].send({ type: 'data', package: 'broadcast', info: 'info' });
+  }
+});

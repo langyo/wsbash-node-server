@@ -12,11 +12,7 @@ module.exports = class SocketServer {
     this.server.on('connection', conn => {
       let id = shortid.generate();
       console.log('A new connection from', conn._socket.remoteAddress, '->', id);
-      this.clients[id] = new SocketManager(conn, id, this.commandRegister,
-        (obj) => {
-          for(let i of Object.keys(this.clients)) this.clients[i].send(obj);
-        }
-      );
+      this.clients[id] = new SocketManager(conn, id, this.commandRegister, this.clients);
       conn.on('close', (code, reason) => {
         console.log('The connection', id, 'has been closed, code', code, 'and the reason is:', reason);
         delete this.clients[id];
