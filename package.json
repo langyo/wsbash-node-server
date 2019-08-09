@@ -4,6 +4,7 @@
   "description": "A C/S data exchange tool library that based on WebSocket.",
   "main": "./src/socketServer.js",
   "scripts": {
+    "start": "node ./demo/example.js",
     "test": "jest --watch"
   },
   "author": "langyo",
